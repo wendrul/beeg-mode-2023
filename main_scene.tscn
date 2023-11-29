@@ -1,42 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwq14r5h02og1"]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource type="Texture2D" uid="uid://c0nw1aj63bmt6" path="res://icon.svg" id="1_lgrau"]
-[ext_resource type="Script" path="res://CharacterBody2D.cs" id="2_hkqwf"]
+[ext_resource path="res://CharacterTest.tscn" type="PackedScene" id=1]
 
-[sub_resource type="TorusMesh" id="TorusMesh_83ir6"]
+[sub_resource type="CubeMesh" id=1]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5gogx"]
-radius = 0.252308
-height = 2.0
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 0.999999, 1 )
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t3go5"]
-size = Vector2(128, 128)
+[node name="root" type="Node2D"]
 
-[node name="Node2D" type="Node2D"]
+[node name="Character2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 87, -213 )
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2(0, 42.6875)
-scale = Vector2(265, 161.25)
-mesh = SubResource("TorusMesh_83ir6")
+position = Vector2( 71.5, 15.5 )
+scale = Vector2( 341.5, 15.5 )
+mesh = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_5gogx")
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(67.5, -29.5)
-scale = Vector2(0.210938, 0.210938)
-script = ExtResource("2_hkqwf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-shape = SubResource("RectangleShape2D_t3go5")
-
-[node name="Icon" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_lgrau")
-
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D/Icon"]
-editor_description = "this is the main camera"
-position = Vector2(-125.714, 82.2857)
-scale = Vector2(1.14286, 1.14286)
+position = Vector2( 9.83477e-07, 0 )
+shape = SubResource( 2 )
