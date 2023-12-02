@@ -1,25 +1,26 @@
 using Godot;
 using System;
+using BeegMode2023.Scripts;
 
 public class Testing : RigidBody2D
 {
     [Export] public float speed = 200f;
-    private bool followMouse = false;
+    public bool followMouse = false;
     private Vector2 velocity;
     private Vector2 mousePos;
     private bool mouseUp;
+    private EditorController _editorController;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        _editorController =  Utilities.GetChildByType<EditorController>(GetTree().Root, true);
+        GD.Print("Editor: " + _editorController.Name);
     }
 
     public override void _PhysicsProcess(float delta)
     {
         GetInput();
-        
-      
     }
 
 
@@ -31,9 +32,6 @@ public class Testing : RigidBody2D
             GlobalPosition = mousePos;
             if (!Input.IsActionPressed("mouse_click"))
             {
-                GD.Print("Mouse Up");
-                GD.Print("Pos after: " +GlobalPosition);
-
                 followMouse = false;
             }
 
@@ -54,9 +52,12 @@ public class Testing : RigidBody2D
 
     private void on_StaticBody2D_mouse_entered()
     {
-        GD.Print("Mouse: enter ");
-
+        _editorController.IsHoveringAnObject = true;
     }
+   private void On_Floor_mouse_exited() 
+   {
+        _editorController.IsHoveringAnObject = false;
+   }
 
     private void On_StaticBody2D_input_event(Node2D Viewport, InputEvent inputEvent, int shape_idx)
     {
@@ -64,8 +65,6 @@ public class Testing : RigidBody2D
         {
             if (eventMouseButton.IsPressed())
             {
-                GD.Print("Pos before: " +GlobalPosition);
-                GD.Print("Mouse down");
                 followMouse = true;
             }
        

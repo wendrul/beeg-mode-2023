@@ -7,7 +7,7 @@
 extents = Vector2( 39.5502, 14.1964 )
 
 [node name="Floor" type="RigidBody2D"]
-rotation = 0.000935612
+rotation = 1.5708
 input_pickable = true
 mode = 1
 gravity_scale = 0.0
