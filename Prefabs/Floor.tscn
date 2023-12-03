@@ -4,10 +4,11 @@
 [ext_resource path="res://Scripts/Testing.cs" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 39.5502, 14.1964 )
+extents = Vector2( 40.7001, 11.8667 )
 
 [node name="Floor" type="RigidBody2D"]
 rotation = 0.000935612
+scale = Vector2( 0.3, 1 )
 input_pickable = true
 mode = 1
 gravity_scale = 0.0
@@ -15,7 +16,7 @@ script = ExtResource( 2 )
 speed = 3000.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 6.98492e-10, 2.69316 )
+position = Vector2( 6.98492e-10, -2.99766 )
 scale = Vector2( 20, 2.444 )
 shape = SubResource( 2 )
 
@@ -23,6 +24,5 @@ shape = SubResource( 2 )
 scale = Vector2( 25.36, 1 )
 texture = ExtResource( 1 )
 
-[connection signal="input_event" from="." to="." method="On_StaticBody2D_input_event"]
 [connection signal="mouse_entered" from="." to="." method="on_StaticBody2D_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="On_Floor_mouse_exited"]

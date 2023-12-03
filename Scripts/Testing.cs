@@ -15,7 +15,6 @@ public class Testing : RigidBody2D
     public override void _Ready()
     {
         _editorController =  Utilities.GetChildByType<EditorController>(GetTree().Root, true);
-        GD.Print("Editor: " + _editorController.Name);
     }
 
     public override void _PhysicsProcess(float delta)
@@ -42,13 +41,7 @@ public class Testing : RigidBody2D
     private void GetInput()
     {
     }
-
-    //  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
-
+    
 
     private void on_StaticBody2D_mouse_entered()
     {
@@ -58,18 +51,5 @@ public class Testing : RigidBody2D
    {
         _editorController.IsHoveringAnObject = false;
    }
-
-    private void On_StaticBody2D_input_event(Node2D Viewport, InputEvent inputEvent, int shape_idx)
-    {
-        if (inputEvent is InputEventMouseButton eventMouseButton  )
-        {
-            if (eventMouseButton.IsPressed())
-            {
-                followMouse = true;
-            }
-       
-        }
-      
-    }
 }
 

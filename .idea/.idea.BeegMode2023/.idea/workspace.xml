@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="" />
+    <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/UI/PlatformButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/Floor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/Floor.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/wall.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/wall.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/TestingScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/TestingScene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/main_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/main_scene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/EditorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/EditorController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Testing.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Testing.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/UI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI/UI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -12,6 +23,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/d9/478ef957/RandomNumberGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -108,7 +122,8 @@
       <workItem from="1701292691210" duration="30000" />
       <workItem from="1701292775712" duration="67000" />
       <workItem from="1701425971097" duration="802000" />
-      <workItem from="1701596654544" duration="403000" />
+      <workItem from="1701596654544" duration="870000" />
+      <workItem from="1701597555541" duration="7084000" />
     </task>
     <servers />
   </component>

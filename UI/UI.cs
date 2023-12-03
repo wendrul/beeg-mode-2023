@@ -3,17 +3,36 @@ using System;
 
 public class UI : CanvasLayer
 {
+    [Export] public NodePath labelPath;
 
-   [Export] public Label scoreLabel;
+    private int _score;
+    private int Score
+    {
+        get => _score;
+        set
+        {
+            _score = value;
+            UpdateScoreLabel();
+        }
+    }
+
+    private Label scoreLabel;
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        
+        scoreLabel = (Label)GetNode(labelPath);
+        scoreLabel.Text = "Ready for test";
+        Score = 0;
     }
 
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    private void UpdateScoreLabel()
+    {
+        GD.Print(Score);
+        scoreLabel.Text = Score.ToString();
+    }
+    
 }
+
+
+

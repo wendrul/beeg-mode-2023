@@ -5,7 +5,7 @@ namespace BeegMode2023.Scripts
 {
     public class EditorController : Node2D
     {
-        enum Platforms
+        public enum Platforms
         {
             Platform,
             Wall
@@ -23,21 +23,19 @@ namespace BeegMode2023.Scripts
         public override void _Process(float delta)
         {
             //Select type of platform
+            /*
             if (Input.IsActionPressed("1"))
                 currentPlatform = Platforms.Platform;
             if (Input.IsActionPressed("2"))
                 currentPlatform = Platforms.Wall;
+                */
             
             //Spawn or movePlatform
-            if (Input.IsActionPressed("mouse_click") && !HasObject && !IsHoveringAnObject)
-                ProcessPlatformToSpawn();
-            else if (!Input.IsActionPressed("mouse_click") && HasObject)
-                HasObject = false;
         }
-
-        private void ProcessPlatformToSpawn()
+        
+        public void ProcessPlatformToSpawn(Platforms platformType)
         {
-            switch (currentPlatform)
+            switch (platformType)
             {
                 case Platforms.Platform:
                     Testing testPlatform = (Testing)Platform.Instance();
