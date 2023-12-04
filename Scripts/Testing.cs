@@ -10,10 +10,13 @@ public class Testing : RigidBody2D
     private Vector2 mousePos;
     private bool mouseUp;
     private EditorController _editorController;
+    private CollisionShape2D collider;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
+        collider = Utilities.GetChildByType<CollisionShape2D>(this, false);
+        collider.Disabled = true;
         _editorController =  Utilities.GetChildByType<EditorController>(GetTree().Root, true);
     }
 
@@ -32,6 +35,7 @@ public class Testing : RigidBody2D
             if (!Input.IsActionPressed("mouse_click"))
             {
                 followMouse = false;
+                collider.Disabled = false;
             }
 
 
