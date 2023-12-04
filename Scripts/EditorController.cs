@@ -38,13 +38,13 @@ namespace BeegMode2023.Scripts
             switch (platformType)
             {
                 case Platforms.Platform:
-                    Testing testPlatform = (Testing)Platform.Instance();
+                    PlaceablePlatform testPlatform = (PlaceablePlatform)Platform.Instance();
                     AddChild(testPlatform);
                     testPlatform.followMouse = true;
                     HasObject = true;
                     break;
                 case Platforms.Wall:
-                    Testing wallTest = (Testing)Wall.Instance();
+                    PlaceablePlatform wallTest = (PlaceablePlatform)Wall.Instance();
                     AddChild(wallTest);
                     wallTest.followMouse = true;
                     HasObject = true;

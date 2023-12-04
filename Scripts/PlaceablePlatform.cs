@@ -2,21 +2,18 @@ using Godot;
 using System;
 using BeegMode2023.Scripts;
 
-public class Testing : RigidBody2D
+public class PlaceablePlatform : RigidBody2D
 {
-    [Export] public float speed = 200f;
     public bool followMouse = false;
-    private Vector2 velocity;
-    private Vector2 mousePos;
-    private bool mouseUp;
+    private Vector2 _mousePos;
     private EditorController _editorController;
-    private CollisionShape2D collider;
+    private CollisionShape2D _collider;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        collider = Utilities.GetChildByType<CollisionShape2D>(this, false);
-        collider.Disabled = true;
+        _collider = Utilities.GetChildByType<CollisionShape2D>(this, false);
+        _collider.Disabled = true;
         _editorController =  Utilities.GetChildByType<EditorController>(GetTree().Root, true);
     }
 
@@ -28,17 +25,15 @@ public class Testing : RigidBody2D
 
     public override void _Process(float delta)
     {
-        mousePos = GetGlobalMousePosition();
+        _mousePos = GetGlobalMousePosition();
         if (followMouse)
         {
-            GlobalPosition = mousePos;
+            GlobalPosition = _mousePos;
             if (!Input.IsActionPressed("mouse_click"))
             {
                 followMouse = false;
-                collider.Disabled = false;
+                _collider.Disabled = false;
             }
-
-
         }
     }
 
@@ -56,4 +51,3 @@ public class Testing : RigidBody2D
         _editorController.IsHoveringAnObject = false;
    }
 }
-
