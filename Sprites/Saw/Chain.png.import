@@ -2,25 +2,25 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Green.png-030e6f672dd68d4d3985569364e18495.stex"
+path="res://.import/Chain.png-fcdf6a819c7a42255fa9d2ce164e1c45.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Green.png"
-dest_files=[ "res://.import/Green.png-030e6f672dd68d4d3985569364e18495.stex" ]
+source_file="res://Sprites/Saw/Chain.png"
+dest_files=[ "res://.import/Chain.png-fcdf6a819c7a42255fa9d2ce164e1c45.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

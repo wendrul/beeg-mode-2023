@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/CharacterController.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Sprites/Terrain (16x16).png" type="Texture" id=2]
 [ext_resource path="res://Scripts/EditorController.cs" type="Script" id=3]
 [ext_resource path="res://UI/UI.tscn" type="PackedScene" id=4]
 
@@ -8,6 +9,59 @@
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 1.00386, 1 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
+
+[sub_resource type="TileSet" id=3]
+0/name = "Terrain (16x16).png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 96, 0, 80, 48 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 3, 0 ), 127, Vector2( 3, 1 ), 73, Vector2( 4, 0 ), 319, Vector2( 4, 1 ), 292 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 16, 16 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape = SubResource( 4 )
+0/shape_one_way = false
+0/shape_one_way_margin = 1.0
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 1, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+}, {
+"autotile_coord": Vector2( 2, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,8 +81,13 @@ mesh = SubResource( 1 )
 [node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
-visible = false
-position = Vector2( 0, -9.53674e-07 )
+position = Vector2( 0, -4.76837e-07 )
 shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -851957, 0, 0, -851956, 0, 1, -851955, 0, 1, -851954, 0, 1, -851953, 0, 2, -786421, 0, 65536, -786420, 0, 65537, -786419, 0, 65537, -786418, 0, 65537, -786417, 0, 65538, -720885, 0, 65536, -720884, 0, 65537, -720883, 0, 65537, -720882, 0, 65537, -720881, 0, 65538, -655349, 0, 65536, -655348, 0, 65537, -655347, 0, 65537, -655346, 0, 65537, -655345, 0, 65538, -589813, 0, 65536, -589812, 0, 65537, -589811, 0, 65537, -589810, 0, 65537, -589809, 0, 0, -589808, 0, 2, -524286, 0, 0, -524285, 0, 1, -524284, 0, 1, -524283, 0, 1, -524282, 0, 1, -524281, 0, 1, -524280, 0, 1, -524279, 0, 2, -524277, 0, 65536, -524276, 0, 65537, -524275, 0, 65537, -524274, 0, 65537, -524273, 0, 65537, -524272, 0, 65538, -458750, 0, 131072, -458749, 0, 131073, -458748, 0, 131073, -458747, 0, 131073, -458746, 0, 131073, -458745, 0, 131073, -458744, 0, 131073, -458743, 0, 131074, -458741, 0, 65536, -458740, 0, 65537, -458739, 0, 65537, -458738, 0, 65537, -458737, 0, 65537, -458736, 0, 65538, -393205, 0, 65536, -393204, 0, 65537, -393203, 0, 65537, -393202, 0, 65537, -393201, 0, 65537, -393200, 0, 65538, -327669, 0, 65536, -327668, 0, 65537, -327667, 0, 65537, -327666, 0, 65537, -327665, 0, 65537, -327664, 0, 65538, -262133, 0, 65536, -262132, 0, 65537, -262131, 0, 65537, -262130, 0, 65537, -262129, 0, 65537, -262128, 0, 65538, -196597, 0, 131072, -196596, 0, 131073, -196595, 0, 131073, -196594, 0, 131073, -196593, 0, 131073, -196592, 0, 131074, 196625, 0, 0, 196626, 0, 1, 196627, 0, 1, 196628, 0, 1, 196629, 0, 2, 262161, 0, 131072, 262162, 0, 131073, 262163, 0, 131073, 262164, 0, 131073, 262165, 0, 131074 )
 
 [editable path="EditorController/UI"]

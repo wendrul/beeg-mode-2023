@@ -8,13 +8,15 @@ namespace BeegMode2023.Scripts
         public enum Platforms
         {
             Platform,
-            Wall
+            Wall,
+            Spikes
         }
         public bool HasObject;
         public bool IsHoveringAnObject;
-        private Platforms currentPlatform = Platforms.Platform;
+        private PlaceablePlatform currentPlatform;
         private PackedScene Platform = GD.Load<PackedScene>("res://Prefabs/Floor.tscn");
         private PackedScene Wall = GD.Load<PackedScene>("res://Prefabs/wall.tscn");
+        private PackedScene Spikes = GD.Load<PackedScene>("res://Prefabs/FloorSpikes.tscn");
 
         private bool _isEditorMode = false;
         private CanvasLayer _ui;
@@ -38,10 +40,20 @@ namespace BeegMode2023.Scripts
         
         private void ExitEditorMode()
         {
-            Engine.TimeScale = 1; 
+            Engine.TimeScale = 1;
+            if (currentPlatform != null)
+            {
+                var tween = CreateTween();
+                tween.TweenProperty(
+                    currentPlatform, "scale", new Vector2(1.1f, 1.1f), .1f);
+                tween.Chain().TweenProperty(
+                    currentPlatform, "scale", new Vector2(1f, 1f), .05f);
+
+            }
             _ui.Hide();
             _isEditorMode = false;
         }
+        
 
         private void ToggleEditorMode()
         {
@@ -55,16 +67,14 @@ namespace BeegMode2023.Scripts
             {
                 ToggleEditorMode();
             }
-            //Select type of platform
-            /*
-            if (Input.IsActionPressed("1"))
-                currentPlatform = Platforms.Platform;
-            if (Input.IsActionPressed("2"))
-                currentPlatform = Platforms.Wall;
-                */
+
+            if (Input.IsActionJustPressed("debug"))
+            {
+                GetTree().ReloadCurrentScene();
+            }
             
-            //Spawn or movePlatform
         }
+
 
 
         public void ProcessPlatformToSpawn(Platforms platformType)
@@ -78,6 +88,10 @@ namespace BeegMode2023.Scripts
                 case Platforms.Wall:
                     platform = (PlaceablePlatform)Wall.Instance();
                     break;
+                case Platforms.Spikes:
+                    platform = (PlaceablePlatform)Spikes.Instance();
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -85,6 +99,7 @@ namespace BeegMode2023.Scripts
             platform.followMouse = true;
             HasObject = true;
             platform.onPlacement = () => this.ExitEditorMode();
+            currentPlatform = platform;
         }
         
     }
