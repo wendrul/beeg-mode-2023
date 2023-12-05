@@ -15,13 +15,46 @@ namespace BeegMode2023.Scripts
         private Platforms currentPlatform = Platforms.Platform;
         private PackedScene Platform = GD.Load<PackedScene>("res://Prefabs/Floor.tscn");
         private PackedScene Wall = GD.Load<PackedScene>("res://Prefabs/wall.tscn");
+
+        private bool _isEditorMode = false;
+        private CanvasLayer _ui;
+
+        public override void _Ready()
+        {
+            _ui = Utilities.GetChildByType<CanvasLayer>(this, false);
+            ExitEditorMode();
+        }
+        
         public override void _PhysicsProcess(float delta)
         {
-            base._PhysicsProcess(delta);
+        }
+
+        private void EnterEditorMode()
+        {
+            Engine.TimeScale = 0.2f; 
+            _ui.Show();
+            _isEditorMode = true;
+        }
+        
+        private void ExitEditorMode()
+        {
+            Engine.TimeScale = 1; 
+            _ui.Hide();
+            _isEditorMode = false;
+        }
+
+        private void ToggleEditorMode()
+        {
+            if (!_isEditorMode) EnterEditorMode();
+            else ExitEditorMode();
         }
 
         public override void _Process(float delta)
         {
+            if (Input.IsActionJustPressed("toggle_editor_mode"))
+            {
+                ToggleEditorMode();
+            }
             //Select type of platform
             /*
             if (Input.IsActionPressed("1"))
@@ -32,31 +65,27 @@ namespace BeegMode2023.Scripts
             
             //Spawn or movePlatform
         }
-        
+
+
         public void ProcessPlatformToSpawn(Platforms platformType)
         {
+            PlaceablePlatform platform;
             switch (platformType)
             {
                 case Platforms.Platform:
-                    PlaceablePlatform testPlatform = (PlaceablePlatform)Platform.Instance();
-                    AddChild(testPlatform);
-                    testPlatform.followMouse = true;
-                    HasObject = true;
+                    platform = (PlaceablePlatform)Platform.Instance();
                     break;
                 case Platforms.Wall:
-                    PlaceablePlatform wallTest = (PlaceablePlatform)Wall.Instance();
-                    AddChild(wallTest);
-                    wallTest.followMouse = true;
-                    HasObject = true;
+                    platform = (PlaceablePlatform)Wall.Instance();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            AddChild(platform);
+            platform.followMouse = true;
+            HasObject = true;
+            platform.onPlacement = () => this.ExitEditorMode();
         }
         
-        public override void _Ready()
-        {
-            base._Ready();
-        }
     }
 }
