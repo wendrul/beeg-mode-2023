@@ -126,7 +126,7 @@ points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 } ]
 0/z_index = 0
 
-[node name="Node2D" type="Node2D"]
+[node name="rootNode" type="Node2D"]
 
 [node name="EditorController" type="Node2D" parent="."]
 script = ExtResource( 3 )

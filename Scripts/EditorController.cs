@@ -24,10 +24,12 @@ namespace BeegMode2023.Scripts
 
         private bool _isEditorMode = false;
         private CanvasLayer _ui;
+        private CharacterController _player;
 
         public override void _Ready()
         {
             _ui = Utilities.GetChildByType<CanvasLayer>(this, false);
+            _player = GetNode<CharacterController>("/root/rootNode/CharacterController");
             ExitEditorMode();
         }
         
@@ -39,6 +41,7 @@ namespace BeegMode2023.Scripts
         {
             Engine.TimeScale = 0.2f; 
             _ui.Show();
+            _player.EditorModeLockInputs = true;
             _isEditorMode = true;
         }
 
@@ -56,6 +59,7 @@ namespace BeegMode2023.Scripts
                 currentPlatform = null;
             }
             _ui.Hide();
+            _player.EditorModeLockInputs = false;
             _isEditorMode = false;
         }
         
