@@ -9,14 +9,18 @@ namespace BeegMode2023.Scripts
         {
             Platform,
             Wall,
-            Spikes
+            Spikes,
+            Vertical
         }
+      
+        
         public bool HasObject;
         public bool IsHoveringAnObject;
         private PlaceablePlatform currentPlatform;
         private PackedScene Platform = GD.Load<PackedScene>("res://Prefabs/Floor.tscn");
         private PackedScene Wall = GD.Load<PackedScene>("res://Prefabs/wall.tscn");
         private PackedScene Spikes = GD.Load<PackedScene>("res://Prefabs/FloorSpikes.tscn");
+        private PackedScene Vertical = GD.Load<PackedScene>("res://Prefabs/VerticalPlatform.tscn");
 
         private bool _isEditorMode = false;
         private CanvasLayer _ui;
@@ -45,7 +49,7 @@ namespace BeegMode2023.Scripts
             {
                 var tween = CreateTween();
                 tween.TweenProperty(
-                    currentPlatform, "scale", new Vector2(1.4f, 1.4f), .1f);
+                    currentPlatform, "scale", new Vector2(1.2f, 1.2f), .1f);
                 tween.Chain().TweenProperty(
                     currentPlatform, "scale", new Vector2(1f, 1f), .05f);
                 currentPlatform.OnPlacement -= ExitEditorMode;
@@ -77,7 +81,6 @@ namespace BeegMode2023.Scripts
         }
 
 
-
         public void ProcessPlatformToSpawn(Platforms platformType)
         {
             PlaceablePlatform platform;
@@ -91,6 +94,9 @@ namespace BeegMode2023.Scripts
                     break;
                 case Platforms.Spikes:
                     platform = (PlaceablePlatform)Spikes.Instance();
+                    break;
+                case Platforms.Vertical:
+                    platform = (PlaceablePlatform)Vertical.Instance();
                     break;
 
                 default:

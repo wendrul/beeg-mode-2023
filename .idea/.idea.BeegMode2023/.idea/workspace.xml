@@ -5,15 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Scripts/MovingPlatform.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/Floor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/Floor.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/TestingScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/TestingScene.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/main_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/main_scene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/wall.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/wall.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/UI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/UI.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/CharacterController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/EditorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/EditorController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Spikes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Spikes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/PlatformButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI/PlatformButton.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/UI.tscn" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sprites/Saw/Off.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Saw/Off.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sprites/character.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/character.png.import" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +30,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/d4/a1916a1a/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/50/2de13dcb/Engine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/9e/85c4dac7/KinematicBody2D.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/d9/478ef957/RandomNumberGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -39,6 +44,9 @@
   &quot;associatedIndex&quot;: 0
 }</component>
   <component name="ProjectId" id="2YrnZIPcu31HVh4adGiSVbRBpcO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -128,7 +136,7 @@
       <workItem from="1701686843920" duration="341000" />
       <workItem from="1701783814457" duration="23000" />
       <workItem from="1701783850261" duration="1432000" />
-      <workItem from="1701812175576" duration="11160000" />
+      <workItem from="1701812175576" duration="17088000" />
     </task>
     <servers />
   </component>

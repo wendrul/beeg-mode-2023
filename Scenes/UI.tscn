@@ -1,41 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://UI/UI.cs" type="Script" id=1]
 [ext_resource path="res://UI/PlatformButton.cs" type="Script" id=2]
 
 [node name="UI" type="CanvasLayer"]
-script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""
 }
-labelPath = NodePath("Control/MarginContainer/VBoxContainer/HBoxContainer/Score")
 
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-custom_constants/margin_right = 32
-custom_constants/margin_top = 32
-custom_constants/margin_left = 32
-custom_constants/margin_bottom = 32
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 992.0
-margin_bottom = 568.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
-margin_right = 960.0
-margin_bottom = 14.0
-
-[node name="Score" type="Label" parent="Control/MarginContainer/VBoxContainer/HBoxContainer"]
-margin_right = 89.0
-margin_bottom = 14.0
-text = "asdasdsddsad"
 
 [node name="Button" type="Button" parent="Control"]
 anchor_top = 1.0
@@ -69,6 +43,18 @@ text = "Floor"
 script = ExtResource( 2 )
 platformType = 2
 
+[node name="Button4" type="Button" parent="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 432.0
+margin_top = -104.0
+margin_right = 532.0
+margin_bottom = -4.0
+text = "Floor"
+script = ExtResource( 2 )
+platformType = 3
+
 [connection signal="button_down" from="Control/Button" to="Control/Button" method="On_Button_button_down"]
 [connection signal="button_down" from="Control/Button2" to="Control/Button2" method="On_Button_button_down"]
 [connection signal="button_down" from="Control/Button3" to="Control/Button3" method="On_Button_button_down"]
+[connection signal="button_down" from="Control/Button4" to="Control/Button4" method="On_Button_button_down"]

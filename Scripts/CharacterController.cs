@@ -3,8 +3,8 @@ using System;
 
 public partial class CharacterController : KinematicBody2D
 {
-    public float moveSpeed = 350.0f;
-    public float jumpSpeed = -650f;
+    public float moveSpeed = 300.0f;//350
+    public float jumpSpeed = -550f;//650
     public float gravity = 1250f;
     private float fallSpeedLimit = 800f;
 
