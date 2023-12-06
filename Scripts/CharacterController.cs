@@ -3,38 +3,57 @@ using System;
 
 public partial class CharacterController : KinematicBody2D
 {
-    [Export] public float moveSpeed = 300.0f;
-    [Export] public float jumpSpeed = -800.0f;
-    [Export] public float gravity = 2500f;
-    [Export] private float fallSpeedLimit = 1000;
+    public float moveSpeed = 350.0f;
+    public float jumpSpeed = -650f;
+    public float gravity = 1250f;
+    private float fallSpeedLimit = 800f;
 
     private const float jumpBufferTime = .08f;
     private float jumpBufferTimer = 0;
     private bool isJumping;
-    private const float coyoteTime = .28f;
-    private readonly float jumpAscendingGravity = 2400f;
+    
+    private const float coyoteTime = .08f;
     private float coyoteTimer = 0;
+   
+    private readonly float jumpAscendingGravity = 2500f;
     
     private Vector2 velocity;
-    private float peakGravity = 1000f;
-    private float velocityAtJumpPeak = 400;
+    private float peakGravity = 500f;
+    private float velocityAtJumpPeak = 200;
     private float jumpSpeedCut = .2f;
     private bool alreadyCutSpeed;
+    private AnimatedSprite _animatedSprite;
 
     public override void _Ready()
     {
         GD.Print("Ready!!");
+        _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+    }
+
+    public override void _Process(float delta)
+    {
+        AnimationLogic();
+    }
+
+    public void AnimationLogic()
+    {
+        if (Mathf.Abs(velocity.x) > 0.01 && !isJumping) {
+            _animatedSprite.FlipH = velocity.x < 0;
+            _animatedSprite.Play("Run");
+        }
+        else {
+            _animatedSprite.Play("Idle");
+        }
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        // Vector2 newVelocity = velocity;
-
-        // Add the gravity.
-
-        // Handle Jump.
         Jump(delta);
-
+        if (velocity.y > 0)
+        {
+            isJumping = false;
+        }
+            
 
         float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
                         - (Input.IsActionPressed("move_left") ? 1f:0f);
