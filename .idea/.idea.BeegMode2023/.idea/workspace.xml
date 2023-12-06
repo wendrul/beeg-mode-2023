@@ -6,14 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/Floor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/Floor.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/wall.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/wall.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/TestingScene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/TestingScene.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/main_scene.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/main_scene.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/EditorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/EditorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprites/Green.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Green.png.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project.godot" beforeDir="false" afterPath="$PROJECT_DIR$/project.godot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/character.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/character.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Spikes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Spikes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/PlatformButton.cs" beforeDir="false" afterPath="$PROJECT_DIR$/UI/PlatformButton.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/UI.tscn" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +24,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/41914444499f4996a3e6af79cf6c1fdb574b98/d4/a1916a1a/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/50/2de13dcb/Engine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8c99985ff12947baa88b379583357ac3294000/d9/478ef957/RandomNumberGenerator.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -127,7 +128,7 @@
       <workItem from="1701686843920" duration="341000" />
       <workItem from="1701783814457" duration="23000" />
       <workItem from="1701783850261" duration="1432000" />
-      <workItem from="1701812175576" duration="6883000" />
+      <workItem from="1701812175576" duration="11160000" />
     </task>
     <servers />
   </component>

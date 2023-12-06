@@ -37,7 +37,7 @@ namespace BeegMode2023.Scripts
             _ui.Show();
             _isEditorMode = true;
         }
-        
+
         private void ExitEditorMode()
         {
             Engine.TimeScale = 1;
@@ -45,10 +45,11 @@ namespace BeegMode2023.Scripts
             {
                 var tween = CreateTween();
                 tween.TweenProperty(
-                    currentPlatform, "scale", new Vector2(1.1f, 1.1f), .1f);
+                    currentPlatform, "scale", new Vector2(1.4f, 1.4f), .1f);
                 tween.Chain().TweenProperty(
                     currentPlatform, "scale", new Vector2(1f, 1f), .05f);
-
+                currentPlatform.OnPlacement -= ExitEditorMode;
+                currentPlatform = null;
             }
             _ui.Hide();
             _isEditorMode = false;
@@ -98,9 +99,10 @@ namespace BeegMode2023.Scripts
             AddChild(platform);
             platform.followMouse = true;
             HasObject = true;
-            platform.onPlacement = () => this.ExitEditorMode();
+            platform.OnPlacement += ExitEditorMode;
             currentPlatform = platform;
         }
+        
         
     }
 }

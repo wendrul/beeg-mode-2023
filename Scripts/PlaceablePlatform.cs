@@ -8,7 +8,10 @@ public class PlaceablePlatform : RigidBody2D
     private Vector2 _mousePos;
     private EditorController _editorController;
     private CollisionShape2D _collider;
-    public Action onPlacement { get; set; }
+   // public Action onPlacement { get; set; }
+    
+    public delegate void PlacementEventHandler();
+    public event PlacementEventHandler OnPlacement;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -33,7 +36,7 @@ public class PlaceablePlatform : RigidBody2D
             {
                 followMouse = false;
                 _collider.Disabled = false;
-                onPlacement();
+                OnPlacement?.Invoke();
             }
         }
     }

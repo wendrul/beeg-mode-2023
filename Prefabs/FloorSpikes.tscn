@@ -21,6 +21,7 @@ script = ExtResource( 2 )
 
 [node name="Spikes" type="Node2D" parent="."]
 script = ExtResource( 3 )
+platformPath = NodePath("..")
 
 [node name="Sprites" type="Node2D" parent="Spikes"]
 

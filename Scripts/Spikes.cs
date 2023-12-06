@@ -4,23 +4,21 @@ using BeegMode2023.Scripts;
 
 public class Spikes : Node2D
 {
-
-    [Export] public Node Node;
-    private Area2D _area2D;
+    private PlaceablePlatform _placeablePlatform;
+    private CollisionShape2D collision;
+    [Export] private NodePath platformPath;
     
     public override void _Ready()
     {
-        Test2();
+        _placeablePlatform = (PlaceablePlatform)GetNode(platformPath);
+        collision = Utilities.GetChildByType<CollisionShape2D>(this, true);
+        collision.Disabled = true;
+        _placeablePlatform.OnPlacement += SetUpSpikes;
     }
 
-    public override void _PhysicsProcess(float delta)
-    {
-    }
-
-
+    //Signal
     public void On_Area2D_body_entered(Node body)
     {
-        GD.Print("body entered");
         if (body.IsInGroup("Player"))
         {
             GetTree().ReloadCurrentScene();
@@ -28,20 +26,19 @@ public class Spikes : Node2D
 
     }
 
-    public override void _Process(float delta)
+    public override void _ExitTree()
     {
+        _placeablePlatform.OnPlacement -= SetUpSpikes;
     }
 
 
-    private void Test2()
+    private void SetUpSpikes()
     {
+        collision.Disabled = false;
         var tween = CreateTween().SetLoops();
         tween.TweenProperty(this, "position:y", 10f, .2f).SetDelay(2f);
         tween.Chain().TweenProperty(this, "position:y", 0f, .5f).SetDelay(3f);
     }
-    private async void Test()
-    {
-      
-    }
+ 
     
 }
