@@ -11,12 +11,13 @@ public partial class CharacterController : KinematicBody2D
     private const float jumpBufferTime = .08f;
     private float jumpBufferTimer = 0;
     private bool isJumping;
-    
+
     private const float coyoteTime = .08f;
     private float coyoteTimer = 0;
-   
+
     private readonly float jumpAscendingGravity = 2500f;
-    
+    private readonly float groundAccel = 5000f;
+    private readonly float airAccel = 5000f;
     private Vector2 velocity;
     private float peakGravity = 500f;
     private float velocityAtJumpPeak = 200;
@@ -57,18 +58,39 @@ public partial class CharacterController : KinematicBody2D
 
         float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
                         - (Input.IsActionPressed("move_left") ? 1f:0f);
-        Vector2 direction = new Vector2(horiz, 0);
-        if (direction != Vector2.Zero)
-        {
-            velocity.x = direction.x * moveSpeed;
+        if (Mathf.Abs(horiz) > 0.01) {
+            velocity.x += horiz * horizAccel() * delta;
+        } else {
+            if (IsOnFloor())
+            velocity.x = Mathf.MoveToward(velocity.x, 0, horizAccel() * delta);
+
+
         }
-        else
-        {
-            velocity.x = Mathf.MoveToward(velocity.x, 0, moveSpeed);
-        }
+        velocity.x = Mathf.Clamp(velocity.x, -moveSpeed, +moveSpeed);
+        // if (direction != Vector2.Zero)
+        // {
+        //     velocity.x
+        //     velocity.x = direction.x * moveSpeed;
+        // }
+        // else
+        // {
+        //     velocity.x = Mathf.MoveTowar(velocity.x, 0, moveSpeed);
+        // }
 
         velocity.y = Mathf.Clamp(velocity.y, -maxVerticalSpeed(), maxVerticalSpeed());
         velocity = MoveAndSlide(velocity, new Vector2(0, -1));
+    }
+
+    private float horizAccel()
+    {
+        if (IsOnFloor())
+        {
+            return groundAccel;
+        } else
+        {
+            return airAccel;
+        }
+
     }
 
     private void Jump(float delta) 
