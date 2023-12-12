@@ -1,6 +1,5 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=46 format=2]
 
-[ext_resource path="res://Prefabs/DebugLine.cs" type="Script" id=1]
 [ext_resource path="res://Scripts/CharacterController.cs" type="Script" id=2]
 [ext_resource path="res://Sprites/idle-Sheet.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/run_anim_brouillon-Sheet.png" type="Texture" id=4]
@@ -201,7 +200,7 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 34 )
 animation = "Idle"
-frame = 17
+frame = 20
 playing = true
 
 [node name="leftWallCheck" type="RayCast2D" parent="."]
@@ -215,7 +214,3 @@ enabled = true
 cast_to = Vector2( 8, 0 )
 
 [node name="Node2D" type="Node2D" parent="."]
-
-[node name="Line2D" type="Line2D" parent="Node2D"]
-width = 2.0
-script = ExtResource( 1 )
