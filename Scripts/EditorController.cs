@@ -24,11 +24,13 @@ namespace BeegMode2023.Scripts
 
         private bool _isEditorMode = false;
         private CanvasLayer _ui;
+        private TileMap _grid;
         private CharacterController _player;
 
         public override void _Ready()
         {
             _ui = Utilities.GetChildByType<CanvasLayer>(this, false);
+            _grid = GetNode<TileMap>("./Grid");
             _player = GetNode<CharacterController>("/root/rootNode/CharacterController");
             ExitEditorMode();
         }
@@ -41,6 +43,11 @@ namespace BeegMode2023.Scripts
         {
             Engine.TimeScale = 0.2f; 
             _ui.Show();
+            _grid.Show();
+            _grid.Position = _player.Position;
+            float x = _grid.Position.x - (_grid.Position.x % _grid.CellSize.x);
+            float y = _grid.Position.y - (_grid.Position.y % _grid.CellSize.y);
+            _grid.Position = new Vector2(x, y);
             _player.EditorModeLockInputs = true;
             _isEditorMode = true;
         }
@@ -59,6 +66,7 @@ namespace BeegMode2023.Scripts
                 currentPlatform = null;
             }
             _ui.Hide();
+            _grid.Hide();
             _player.EditorModeLockInputs = false;
             _isEditorMode = false;
         }
