@@ -10,6 +10,7 @@ public partial class CharacterController : KinematicBody2D
 
     private const float jumpBufferTime = .08f;
     private float jumpBufferTimer = 0;
+    private bool canWallJump = true;
     private bool isJumping;
     
     private const float coyoteTime = .08f;
@@ -23,6 +24,23 @@ public partial class CharacterController : KinematicBody2D
     private float jumpSpeedCut = .2f;
     private bool alreadyCutSpeed;
     private AnimatedSprite _animatedSprite;
+    private RayCast2D _leftWallCheck;
+    private RayCast2D _rightWallCheck;
+    private float wallHugFallSpeed = 80f;
+    private bool isHuggingWall;
+    private float wallJumpBufferTimer;
+    private float wallJumpLoseControlTimer = 0f;
+    private float wallJumpLoseControlTime = 0.2f;
+    private float lastWallDir = 1;
+    private float wallJumpCoyoteTime = .08f;
+    private float wallJumpCoyoteTimer = 0f;
+    private float stickToWallTime = .2f;
+    private float stickToWallTimer = 0f;
+    private float wallJumpHorizontalSpeed = 500f;
+    private float wallJumpVerticalSpeed = 500f;
+    private float horizAccel = 20f;
+    private float horizFriction = 50f;
+    private float minSpeed= 1f;
 
     public bool EditorModeLockInputs { get; set; } = false;
 
@@ -30,7 +48,10 @@ public partial class CharacterController : KinematicBody2D
     {
         GD.Print("Ready!!");
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
+        _leftWallCheck = GetNode<RayCast2D>("leftWallCheck");
+        _rightWallCheck = GetNode<RayCast2D>("rightWallCheck");
     }
+
 
     public override void _Process(float delta)
     {
@@ -50,30 +71,96 @@ public partial class CharacterController : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        if (IsOnFloor() || IsOnWall() || IsOnCeiling())
+        {
+            wallJumpLoseControlTimer = 0;
+        }
         Jump(delta);
+        WallHug(delta);
+        WallJump(delta);
         if (velocity.y > 0)
         {
             isJumping = false;
         }
-            
+        HorizontalMovement(delta);
 
-        float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
-                        - (Input.IsActionPressed("move_left") ? 1f:0f);
-        Vector2 direction = new Vector2(horiz, 0);
-        if (!EditorModeLockInputs)
-        {
-            if (direction != Vector2.Zero)
-            {
-                velocity.x = direction.x * moveSpeed;
-            }
-            else
-            {
-                velocity.x = Mathf.MoveToward(velocity.x, 0, moveSpeed);
-            }
-        }
 
         velocity.y = Mathf.Clamp(velocity.y, -maxVerticalSpeed(), maxVerticalSpeed());
         velocity = MoveAndSlide(velocity, new Vector2(0, -1));
+    }
+
+    private bool canMove()
+    {
+        return !EditorModeLockInputs && wallJumpLoseControlTimer <= 0.00001;
+    }
+
+    private void HorizontalMovement(float delta)
+    {
+        float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
+                        - (Input.IsActionPressed("move_left") ? 1f:0f);
+
+        if (canMove())
+        {
+            if (horiz != 0)
+            {
+                velocity.x = Mathf.Lerp(velocity.x, horiz * moveSpeed, horizAccel * delta);
+            }
+            if (Mathf.Abs(horiz) <= 0.0001)
+            {
+                velocity.x = Mathf.Lerp(velocity.x, 0, horizFriction * delta);
+                velocity.x = Mathf.Abs(velocity.x) < minSpeed ? 0 : velocity.x;
+            }
+        }
+    }
+
+    private void WallHug(float delta)
+    {
+        stickToWallTimer = stickToWallTimer > delta ? stickToWallTimer - delta : 0;
+        if (!IsOnFloor() && (_leftWallCheck.IsColliding() || _rightWallCheck.IsColliding()))
+        {
+            lastWallDir = _leftWallCheck.IsColliding() ? 1 : -1;
+            isHuggingWall = true;
+            float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
+                        - (Input.IsActionPressed("move_left") ? 1f:0f);
+            if ((horiz < 0 && _leftWallCheck.IsColliding()) 
+                    || (horiz > 0 && _rightWallCheck.IsColliding()))
+            {
+                stickToWallTimer = stickToWallTime;
+            }
+            if (stickToWallTimer > 0)
+            {
+                velocity.y = Mathf.Clamp(velocity.y, -maxVerticalSpeed(), wallHugFallSpeed);
+            }
+            return ;
+        }
+        isHuggingWall = false;
+    }
+
+    private void WallJump(float delta)
+    {
+        wallJumpBufferTimer = wallJumpBufferTimer > delta ? wallJumpBufferTimer - delta : 0;
+        wallJumpCoyoteTimer = wallJumpCoyoteTimer > delta ? wallJumpCoyoteTimer - delta : 0;
+        wallJumpLoseControlTimer = wallJumpLoseControlTimer > delta ?
+                wallJumpLoseControlTimer - delta : 0;
+        if (Input.IsActionJustPressed("jump") && canWallJump)
+        {
+            wallJumpBufferTimer = jumpBufferTime;
+        }
+        if (isHuggingWall)
+        {
+            wallJumpCoyoteTimer = wallJumpCoyoteTime;
+        }
+        if (wallJumpCoyoteTimer > 0)
+        {
+            if (wallJumpBufferTimer > 0 && !EditorModeLockInputs) 
+            {
+                isJumping = true;
+                velocity.y = -wallJumpVerticalSpeed;
+                velocity.x = lastWallDir * wallJumpHorizontalSpeed;
+                wallJumpBufferTimer = 0;
+                wallJumpLoseControlTimer = wallJumpLoseControlTime;
+            }
+        }
     }
 
     private void Jump(float delta) 
@@ -93,8 +180,9 @@ public partial class CharacterController : KinematicBody2D
         {
             jumpBufferTimer = jumpBufferTime;
         }
+        canWallJump = true;
         if (Input.IsActionJustReleased("jump") 
-                && isJumping && velocity.y < 0 && canMove() && !alreadyCutSpeed && !EditorModeLockInputs)
+                && isJumping && velocity.y < 0 && canMove() && !alreadyCutSpeed)
         {
             alreadyCutSpeed = true;
             velocity.y *= jumpSpeedCut;
@@ -103,17 +191,13 @@ public partial class CharacterController : KinematicBody2D
         {
             if (jumpBufferTimer > 0 && !EditorModeLockInputs)
             {
+                canWallJump = false;
                 velocity.y = jumpSpeed;
                 coyoteTimer = 0f;
                 jumpBufferTimer = 0f;
                 isJumping = true;
             }
         }
-    }
-
-    private bool canMove()
-    {
-        return true;
     }
 
     private float jumpAffectedGravity()
