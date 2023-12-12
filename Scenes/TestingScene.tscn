@@ -150,6 +150,7 @@ position = Vector2( 0, -1 )
 script = ExtResource( 3 )
 
 [node name="Grid" type="TileMap" parent="EditorController"]
+visible = false
 modulate = Color( 1, 1, 1, 0.270588 )
 tile_set = SubResource( 14 )
 cell_size = Vector2( 16, 16 )
