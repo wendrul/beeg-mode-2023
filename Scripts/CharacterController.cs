@@ -120,9 +120,10 @@ public partial class CharacterController : KinematicBody2D
         {
             lastWallDir = _leftWallCheck.IsColliding() ? 1 : -1;
             isHuggingWall = true;
-            float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
+            alreadyCutSpeed = false;
+            float horiz = (Input.IsActionPressed("move_right") ? 1f:0f)
                         - (Input.IsActionPressed("move_left") ? 1f:0f);
-            if ((horiz < 0 && _leftWallCheck.IsColliding()) 
+            if ((horiz < 0 && _leftWallCheck.IsColliding())
                     || (horiz > 0 && _rightWallCheck.IsColliding()))
             {
                 stickToWallTimer = stickToWallTime;
