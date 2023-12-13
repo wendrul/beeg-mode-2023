@@ -247,16 +247,16 @@ zoom = Vector2( 0.5, 0.5 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 34 )
 animation = "Idle"
-frame = 2
+frame = 16
 playing = true
 
 [node name="leftWallCheck" type="RayCast2D" parent="."]
-position = Vector2( 0, -11 )
+position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( -8, 0 )
 
 [node name="rightWallCheck" type="RayCast2D" parent="."]
-position = Vector2( 0, -11 )
+position = Vector2( 0, -1 )
 enabled = true
 cast_to = Vector2( 8, 0 )
 

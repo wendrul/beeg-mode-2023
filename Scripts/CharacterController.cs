@@ -34,7 +34,7 @@ public partial class CharacterController : KinematicBody2D
     private float lastWallDir = 1;
     private float wallJumpCoyoteTime = .08f;
     private float wallJumpCoyoteTimer = 0f;
-    private float stickToWallTime = .2f;
+    private float stickToWallTime = .08f;
     private float stickToWallTimer = 0f;
     private float wallJumpHorizontalSpeed = 500f;
     private float wallJumpVerticalSpeed = 500f;
