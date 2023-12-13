@@ -88,6 +88,7 @@ public partial class CharacterController : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        velocity = MoveAndSlide(velocity, new Vector2(0, -1));
         if (IsOnFloor() || IsOnWall() || IsOnCeiling())
         {
             wallJumpLoseControlTimer = 0;
@@ -103,7 +104,6 @@ public partial class CharacterController : KinematicBody2D
 
 
         velocity.y = Mathf.Clamp(velocity.y, -maxVerticalSpeed(), maxVerticalSpeed());
-        velocity = MoveAndSlide(velocity, new Vector2(0, -1));
     }
 
     private bool canMove()
@@ -185,10 +185,7 @@ public partial class CharacterController : KinematicBody2D
     {
         coyoteTimer = coyoteTimer > delta ? coyoteTimer - delta : 0;
         jumpBufferTimer = jumpBufferTimer > delta ? jumpBufferTimer - delta : 0;
-        if (!IsOnFloor())
-        {
-            velocity.y += jumpAffectedGravity() * (float)delta;
-        }
+        velocity.y += jumpAffectedGravity() * (float)delta;
         if (IsOnFloor())
         {
             coyoteTimer = coyoteTime;
