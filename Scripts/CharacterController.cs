@@ -12,12 +12,12 @@ public partial class CharacterController : KinematicBody2D
     private float jumpBufferTimer = 0;
     private bool canWallJump = true;
     private bool isJumping;
-    
+
     private const float coyoteTime = .08f;
     private float coyoteTimer = 0;
-   
+
     private readonly float jumpAscendingGravity = 2500f;
-    
+
     private Vector2 velocity;
     private float peakGravity = 500f;
     private float velocityAtJumpPeak = 200;
@@ -60,7 +60,24 @@ public partial class CharacterController : KinematicBody2D
 
     public void AnimationLogic()
     {
-        if (Mathf.Abs(velocity.x) > 0.01 && !isJumping) {
+        if (!IsOnFloor())
+        {
+            if (_leftWallCheck.IsColliding())
+            {
+                _animatedSprite.Play("WallSlide");
+                _animatedSprite.FlipH = true;
+            }
+            else if (_rightWallCheck.IsColliding())
+            {
+                _animatedSprite.Play("WallSlide");
+                _animatedSprite.FlipH = false;
+            }
+            else
+            {
+                _animatedSprite.Play("Idle");
+            }
+        }
+        else if (Mathf.Abs(velocity.x) > 0.01 && !isJumping) {
             _animatedSprite.FlipH = velocity.x < 0;
             _animatedSprite.Play("Run");
         }
@@ -96,7 +113,7 @@ public partial class CharacterController : KinematicBody2D
 
     private void HorizontalMovement(float delta)
     {
-        float horiz = (Input.IsActionPressed("move_right") ? 1f:0f) 
+        float horiz = (Input.IsActionPressed("move_right") ? 1f:0f)
                         - (Input.IsActionPressed("move_left") ? 1f:0f);
 
         if (canMove())
@@ -153,7 +170,7 @@ public partial class CharacterController : KinematicBody2D
         }
         if (wallJumpCoyoteTimer > 0)
         {
-            if (wallJumpBufferTimer > 0 && !EditorModeLockInputs) 
+            if (wallJumpBufferTimer > 0 && !EditorModeLockInputs)
             {
                 isJumping = true;
                 velocity.y = -wallJumpVerticalSpeed;
@@ -164,7 +181,7 @@ public partial class CharacterController : KinematicBody2D
         }
     }
 
-    private void Jump(float delta) 
+    private void Jump(float delta)
     {
         coyoteTimer = coyoteTimer > delta ? coyoteTimer - delta : 0;
         jumpBufferTimer = jumpBufferTimer > delta ? jumpBufferTimer - delta : 0;
@@ -172,7 +189,7 @@ public partial class CharacterController : KinematicBody2D
         {
             velocity.y += jumpAffectedGravity() * (float)delta;
         }
-        if (IsOnFloor()) 
+        if (IsOnFloor())
         {
             coyoteTimer = coyoteTime;
             alreadyCutSpeed = false;
@@ -182,7 +199,7 @@ public partial class CharacterController : KinematicBody2D
             jumpBufferTimer = jumpBufferTime;
         }
         canWallJump = true;
-        if (Input.IsActionJustReleased("jump") 
+        if (Input.IsActionJustReleased("jump")
                 && isJumping && velocity.y < 0 && canMove() && !alreadyCutSpeed)
         {
             alreadyCutSpeed = true;
