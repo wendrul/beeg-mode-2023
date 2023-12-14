@@ -43,7 +43,7 @@ namespace BeegMode2023.Scripts
 
         private void EnterEditorMode()
         {
-            Engine.TimeScale = 0.2f; 
+            Engine.TimeScale = 0.1f; 
             _ui.Show();
             _nonUIelements.Show();
             _grid.Show();
