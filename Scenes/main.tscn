@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://Prefabs/CharacterController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Terrain (16x16).png" type="Texture" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Sprites/GridTile16x16.png" type="Texture" id=5]
 [ext_resource path="res://Prefabs/DebugLine.cs" type="Script" id=6]
+[ext_resource path="res://Sprites/dialog_box.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Face_placeholder.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/DialogText.cs" type="Script" id=9]
 
 [sub_resource type="TileSet" id=14]
 0/name = "GridTile16x16.png 0"
@@ -296,6 +299,12 @@ points = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )
 } ]
 3/z_index = 0
 
+[sub_resource type="DynamicFontData" id=28]
+
+[sub_resource type="DynamicFont" id=27]
+size = 20
+font_data = SubResource( 28 )
+
 [node name="rootNode" type="Node2D"]
 position = Vector2( 0, -1 )
 
@@ -347,5 +356,32 @@ script = ExtResource( 6 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 1, -175 )
 current = true
+
+[node name="Dialog" type="CanvasLayer" parent="."]
+
+[node name="Portrait" type="Sprite" parent="Dialog"]
+position = Vector2( 691.75, 515.25 )
+scale = Vector2( 1.20703, 1.20703 )
+texture = ExtResource( 8 )
+
+[node name="DialgoBox" type="Sprite" parent="Dialog"]
+position = Vector2( 455.75, 524.25 )
+scale = Vector2( 1.11719, 1.11719 )
+texture = ExtResource( 7 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialog/DialgoBox"]
+margin_left = -122.0
+margin_top = -37.0
+margin_right = 124.0
+margin_bottom = 43.0
+hint_tooltip = "get that cursor away from my face"
+custom_fonts/bold_font = SubResource( 27 )
+bbcode_enabled = true
+bbcode_text = "asdasdadsadasdas"
+text = "asdasdadsadasdas"
+scroll_active = false
+script = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="Dialog/DialgoBox/RichTextLabel"]
 
 [editable path="EditorController/UI"]
