@@ -239,6 +239,7 @@ public partial class CharacterController : KinematicBody2D
     internal void StopToListen()
     {
         moveSpeed = 0;
+        velocity.x = 0;
         _animatedSprite.Stop();
         _animatedSprite.Play("Idle");
     }
