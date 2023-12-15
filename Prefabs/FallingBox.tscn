@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="StreamTexture" id=79]
+load_path = "res://.import/box.png-bc3b4f5499754271a758380b8d97b61d.stex"
+
+[sub_resource type="RectangleShape2D" id=78]
+extents = Vector2( 8, 8 )
+
+[node name="FallingBox" type="Node2D"]
+position = Vector2( -71, -46 )
+
+[node name="KinematicBody2D" type="RigidBody2D" parent="."]
+continuous_cd = 2
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+texture = SubResource( 79 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+shape = SubResource( 78 )
