@@ -4,6 +4,7 @@ using System;
 public partial class CharacterController : KinematicBody2D
 {
     public float moveSpeed = 300.0f;//350
+    private float maxMoveSpeed = 300.0f;
     public float jumpSpeed = -550f;//650
     public float gravity = 1250f;
     private float fallSpeedLimit = 800f;
@@ -47,6 +48,7 @@ public partial class CharacterController : KinematicBody2D
     public override void _Ready()
     {
         GD.Print("Ready!!");
+        moveSpeed = maxMoveSpeed;
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");
         _leftWallCheck = GetNode<RayCast2D>("leftWallCheck");
         _rightWallCheck = GetNode<RayCast2D>("rightWallCheck");
@@ -232,5 +234,17 @@ public partial class CharacterController : KinematicBody2D
     private float maxVerticalSpeed()
     {
         return fallSpeedLimit;
+    }
+
+    internal void StopToListen()
+    {
+        moveSpeed = 0;
+        _animatedSprite.Stop();
+        _animatedSprite.Play("Idle");
+    }
+
+    internal void ResumeHorizontalMovement()
+    {
+        moveSpeed = maxMoveSpeed;
     }
 }

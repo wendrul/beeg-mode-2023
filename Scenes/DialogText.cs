@@ -6,6 +6,7 @@ using BeegMode2023.Scripts;
 public class DialogText : RichTextLabel
 {
     private CanvasLayer _wholeThing;
+    private CharacterController _player;
     private Tween _tween;
     private bool isDialoging;
     private IEnumerator<int> currentDialog;
@@ -14,12 +15,17 @@ public class DialogText : RichTextLabel
     {
         _wholeThing = GetNode<CanvasLayer>("/root/rootNode/Dialog");
         _wholeThing.Hide();
+        _player = GetNode<CharacterController>("/root/rootNode/CharacterController");
         _tween = GetNode<Tween>("./Tween");
         Utilities.DialogEntity = this;
     }
 
     public override void _Process(float delta)
     {
+        if (isDialoging)
+        {
+            _player.StopToListen();
+        }
         if (Input.IsActionJustPressed("jump"))
         {
             if (isDialoging)
@@ -55,6 +61,7 @@ public class DialogText : RichTextLabel
     private void EndDialog()
     {
         _wholeThing.Hide();
+        _player.ResumeHorizontalMovement();
         isDialoging = false;
     }
 
