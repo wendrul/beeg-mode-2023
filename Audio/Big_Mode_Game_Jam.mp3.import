@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Big_Mode_Game_Jam.mp3-aac424afddf67969e36bb4f49285752c.mp3str"
+
+[deps]
+
+source_file="res://Audio/Big_Mode_Game_Jam.mp3"
+dest_files=[ "res://.import/Big_Mode_Game_Jam.mp3-aac424afddf67969e36bb4f49285752c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
