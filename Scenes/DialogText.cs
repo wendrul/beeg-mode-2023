@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using BeegMode2023.Scripts;
 
 public class DialogText : RichTextLabel
 {
@@ -12,13 +13,14 @@ public class DialogText : RichTextLabel
     public override void _Ready()
     {
         _wholeThing = GetNode<CanvasLayer>("/root/rootNode/Dialog");
+        _wholeThing.Hide();
         _tween = GetNode<Tween>("./Tween");
-        PopUpDialog("HEY THIS IS A NEW MESAGE!!!!!! it contains lots of words and whatnot\n second short\n hihihihihih hi hi hi hi h ih ih ih ih h ih ih ih");
+        Utilities.DialogEntity = this;
     }
 
     public override void _Process(float delta)
     {
-        if (Input.IsActionJustPressed("ui_accept"))
+        if (Input.IsActionJustPressed("jump"))
         {
             if (isDialoging)
             {
@@ -29,15 +31,20 @@ public class DialogText : RichTextLabel
 
     private IEnumerator<int> NextDialog(string currentMessage)
     {
-        foreach (string msg in currentMessage.Split('\n'))
+        foreach (string rawMsg in currentMessage.Split('\n'))
         {
+            string msg = rawMsg.Trim();
+            if (msg.Empty())
+            {
+                continue;
+            }
             BbcodeText = msg;
             PercentVisible = 0;
             
             float secsPerChar = 0.01f;
             
             _tween.Reset(this);
-            _tween.InterpolateProperty(this, "percent_visible", 0.0f, 1.0f, secsPerChar * msg.Length , Tween.TransitionType.Cubic, Tween.EaseType.InOut); 
+            _tween.InterpolateProperty(this, "percent_visible", 0.0f, 1.0f, secsPerChar * msg.Length , Tween.TransitionType.Cubic, Tween.EaseType.InOut);
             _tween.Start();
             yield return 1; 
         } 

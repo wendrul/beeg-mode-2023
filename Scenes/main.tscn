@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Prefabs/CharacterController.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Sprites/Terrain (16x16).png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Sprites/dialog_box.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Face_placeholder.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/DialogText.cs" type="Script" id=9]
+[ext_resource path="res://Prefabs/DialogTrigger.tscn" type="PackedScene" id=10]
 
 [sub_resource type="TileSet" id=14]
 0/name = "GridTile16x16.png 0"
@@ -25,11 +26,6 @@
 0/shape_one_way_margin = 0.0
 0/shapes = [  ]
 0/z_index = 0
-
-[sub_resource type="CubeMesh" id=1]
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 1.00386, 1 )
 
 [sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -330,17 +326,6 @@ tile_data = PoolIntArray( -2818094, 0, 0, -2818093, 0, 0, -2818092, 0, 0, -28180
 [node name="CharacterController" parent="." instance=ExtResource( 1 )]
 position = Vector2( 87, -164 )
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-position = Vector2( 0, 61 )
-scale = Vector2( 346.5, 18 )
-mesh = SubResource( 1 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="MeshInstance2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MeshInstance2D/StaticBody2D"]
-position = Vector2( 0, -4.76837e-07 )
-shape = SubResource( 2 )
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 3 )
 cell_size = Vector2( 16, 16 )
@@ -383,5 +368,8 @@ scroll_active = false
 script = ExtResource( 9 )
 
 [node name="Tween" type="Tween" parent="Dialog/DialgoBox/RichTextLabel"]
+
+[node name="DialogTrigger" parent="." instance=ExtResource( 10 )]
+position = Vector2( 8, -47 )
 
 [editable path="EditorController/UI"]

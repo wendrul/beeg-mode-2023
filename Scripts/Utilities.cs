@@ -4,6 +4,8 @@ namespace BeegMode2023.Scripts
 {
     public static class Utilities
     {
+        public static DialogText DialogEntity {get; set;}
+
         public static T GetChildByType<T>(this Node node, bool recursive = true) 
             where T : Node 
         {
@@ -37,5 +39,10 @@ namespace BeegMode2023.Scripts
             return null;
 
         }
+        public static void PopUpNPCDialog(string dialog)
+        {
+            DialogEntity.PopUpDialog(dialog);
+        }
     }
+
 }
