@@ -5,15 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scenes/FollowPath.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sprites/bsod2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Sprites/bsod2.png.import" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/FallingBox.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/FallingBox.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/BlueScreen.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/BlueScreen.tscn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/main.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/DeathZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DeathZone.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/DestroyWallArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DestroyWallArea.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sprites/character.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/character.png.import" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,7 +126,7 @@
       <workItem from="1701783814457" duration="23000" />
       <workItem from="1701783850261" duration="1432000" />
       <workItem from="1701812175576" duration="17088000" />
-      <workItem from="1702669316479" duration="7555000" />
+      <workItem from="1702669316479" duration="8308000" />
     </task>
     <servers />
   </component>
