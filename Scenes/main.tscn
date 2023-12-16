@@ -946,7 +946,7 @@ Did you just break the fourth wall?
 
 ...
 
-This is not good news.
+This is bad news.
 
 ...
 
@@ -1027,7 +1027,7 @@ position = Vector2( 3117, -109 )
 position = Vector2( 0, -130 )
 
 [node name="4" type="Node2D" parent="LevelElements"]
-position = Vector2( 3162, -732 )
+position = Vector2( 3162, -744 )
 
 [node name="RoomCamera" parent="LevelElements/4" instance=ExtResource( 13 )]
 position = Vector2( 0, -130 )
@@ -1036,7 +1036,7 @@ position = Vector2( 0, -130 )
 position = Vector2( 3265, 519 )
 
 [node name="RoomCamera" parent="LevelElements/5" instance=ExtResource( 13 )]
-position = Vector2( 0, -130 )
+position = Vector2( 0, -125 )
 
 [node name="6" type="Node2D" parent="LevelElements"]
 position = Vector2( 4312, 346 )
@@ -1094,7 +1094,7 @@ position = Vector2( 5008, -280 )
 position = Vector2( 0, -130 )
 
 [node name="DialogTrigger" parent="LevelElements/7" instance=ExtResource( 10 )]
-position = Vector2( -244, 102 )
+position = Vector2( -194, 85 )
 message = "Hmm, that jump looks impossible, but I might have just the thing for you.
 
 I was reading this book called \"Documentation\" that I found under the debris back there. There is a section about a certain \"EditorModeHotReload.dll\".
@@ -1104,13 +1104,13 @@ I'm not sure what most of it means, but it seems you can \"Press tab\" to access
 Why don't you give that a try?"
 
 [node name="8" type="Node2D" parent="LevelElements"]
-position = Vector2( 6050, 59 )
+position = Vector2( 6050, 72 )
 
 [node name="RoomCamera" parent="LevelElements/8" instance=ExtResource( 13 )]
 position = Vector2( 0, -130 )
 
 [node name="9" type="Node2D" parent="LevelElements"]
-position = Vector2( 6499, -561 )
+position = Vector2( 6490, -561 )
 
 [node name="RoomCamera" parent="LevelElements/9" instance=ExtResource( 13 )]
 position = Vector2( 0, -130 )
