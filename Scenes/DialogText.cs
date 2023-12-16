@@ -26,7 +26,7 @@ public class DialogText : RichTextLabel
         {
             _player.StopToListen();
         }
-        if (Input.IsActionJustPressed("jump"))
+        if (Input.IsActionJustPressed("next_dialog"))
         {
             if (isDialoging)
             {

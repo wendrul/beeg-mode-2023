@@ -1,10 +1,12 @@
 using System;
 using Godot;
+using System.Collections.Generic;
 
 namespace BeegMode2023.Scripts
 {
     public class EditorController : Node2D
     {
+        public static bool hasPower;
         public enum Platforms
         {
             Platform,
@@ -27,6 +29,24 @@ namespace BeegMode2023.Scripts
         private TileMap _grid;
         private Node2D _nonUIelements;
         private CharacterController _player;
+
+
+        private void TallyUplatforms(string platformType)
+        {
+            if (Utilities.PlatformTally.TryGetValue(platformType, out int val))
+            {
+                Utilities.PlatformTally[platformType] = val + 1;
+            }
+            else
+            {
+                Utilities.PlatformTally.Add(platformType, 1);
+            } 
+            foreach (KeyValuePair<string, int> kvp in Utilities.PlatformTally)
+            {
+                //textBox3.Text += ("Key = {0}, Value = {1}", kvp.Key, kvp.Value);
+                GD.Print(string.Format("Key = {0}, Value = {1}", kvp.Key, kvp.Value));
+            }
+        }
 
         public override void _Ready()
         {
@@ -84,14 +104,17 @@ namespace BeegMode2023.Scripts
 
         public override void _Process(float delta)
         {
-            if (Input.IsActionJustPressed("toggle_editor_mode"))
+            if (EditorController.hasPower)
             {
-                ToggleEditorMode();
-            }
+                if (Input.IsActionJustPressed("toggle_editor_mode"))
+                {
+                    ToggleEditorMode();
+                }
 
-            if (Input.IsActionJustPressed("debug"))
-            {
-                GetTree().ReloadCurrentScene();
+                if (Input.IsActionJustPressed("debug"))
+                {
+                    GetTree().ReloadCurrentScene();
+                }
             }
             
         }
@@ -122,6 +145,7 @@ namespace BeegMode2023.Scripts
             platform.followMouse = true;
             HasObject = true;
             platform.OnPlacement += ExitEditorMode;
+            platform.OnPlacement += () => TallyUplatforms(platformType.ToString());
             currentPlatform = platform;
         }
         

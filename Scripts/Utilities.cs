@@ -1,11 +1,16 @@
 using System;
 using Godot;
+using System.Collections.Generic;
+
 namespace BeegMode2023.Scripts
 {
     public static class Utilities
     {
         public static DialogText DialogEntity {get; set;}
         public static DeathScreen DeatScreenEntity {get; set;}
+        public static music MusicPlayer { get; internal set; }
+        public static Dictionary<string, int> PlatformTally {get; set;} = new Dictionary<string, int>();
+        public static int Deaths = 0;
 
         public static T GetChildByType<T>(this Node node, bool recursive = true) 
             where T : Node 
@@ -48,6 +53,7 @@ namespace BeegMode2023.Scripts
         internal static void DeathByWiiGlitch()
         {
             DeatScreenEntity.DeathByWiiGlitch();
+            Deaths += 1;
         }
     }
 

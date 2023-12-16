@@ -193,12 +193,12 @@ public partial class CharacterController : KinematicBody2D
             coyoteTimer = coyoteTime;
             alreadyCutSpeed = false;
         }
-        if (Input.IsActionJustPressed("jump"))
+        if (Input.IsActionJustPressed("jump") || Input.IsActionJustPressed("next_dialog"))
         {
             jumpBufferTimer = jumpBufferTime;
         }
         canWallJump = true;
-        if (Input.IsActionJustReleased("jump")
+        if ((Input.IsActionJustReleased("jump") || Input.IsActionJustReleased("next_dialog"))
                 && isJumping && velocity.y < 0 && canMove() && !alreadyCutSpeed)
         {
             alreadyCutSpeed = true;

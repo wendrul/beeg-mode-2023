@@ -29,5 +29,7 @@ public class DestroyWallArea : Area2D
     private void DestroyFourthWall()
     {
         Utilities.PopUpNPCDialog(msg);
+        Utilities.MusicPlayer.Play();
+        EditorController.hasPower = true;
     }
 }

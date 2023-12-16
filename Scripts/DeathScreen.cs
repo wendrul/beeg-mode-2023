@@ -25,6 +25,7 @@ public class DeathScreen : CanvasLayer
     internal void DeathByWiiGlitch()
     {
         Engine.TimeScale = 0;
+        Utilities.MusicPlayer.Stop();
         _wiiDeathSound.Play();
         this.died = true;
         this.Show();

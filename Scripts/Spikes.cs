@@ -16,16 +16,6 @@ public class Spikes : Node2D
         _placeablePlatform.OnPlacement += SetUpSpikes;
     }
 
-    //Signal
-    public void On_Area2D_body_entered(Node body)
-    {
-        if (body.IsInGroup("Player"))
-        {
-            GetTree().ReloadCurrentScene();
-        }
-
-    }
-
     public override void _ExitTree()
     {
         _placeablePlatform.OnPlacement -= SetUpSpikes;
