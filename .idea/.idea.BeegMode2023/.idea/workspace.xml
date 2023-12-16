@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="19ba9785-3750-4c5e-b9ab-35deaf527db1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Scripts/MovingPlatform.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scenes/FollowPath.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprites/bsod2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Sprites/bsod2.png.import" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.BeegMode2023/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/CharacterController.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/Floor.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/Floor.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/FloorSpikes.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prefabs/wall.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/wall.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scenes/UI.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/UI.tscn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/CharacterController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/CharacterController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/EditorController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/EditorController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PlaceablePlatform.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/Spikes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Spikes.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sprites/Saw/Off.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/Sprites/Saw/Off.png.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Prefabs/FallingBox.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Prefabs/FallingBox.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scenes/main.tscn" beforeDir="false" afterPath="$PROJECT_DIR$/Scenes/main.tscn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/DeathZone.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DeathZone.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/DestroyWallArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DestroyWallArea.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sprites/character.png.import" beforeDir="false" afterPath="$PROJECT_DIR$/sprites/character.png.import" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -137,6 +133,7 @@
       <workItem from="1701783814457" duration="23000" />
       <workItem from="1701783850261" duration="1432000" />
       <workItem from="1701812175576" duration="17088000" />
+      <workItem from="1702669316479" duration="7555000" />
     </task>
     <servers />
   </component>

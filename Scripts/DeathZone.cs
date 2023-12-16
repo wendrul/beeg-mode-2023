@@ -16,4 +16,5 @@ public class DeathZone : Area2D
             Utilities.DeathByWiiGlitch();
         }
     }
+    
 }
