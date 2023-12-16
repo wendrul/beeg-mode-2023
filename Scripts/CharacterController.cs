@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using BeegMode2023.Scripts;
 
 public partial class CharacterController : KinematicBody2D
 {
@@ -47,6 +48,7 @@ public partial class CharacterController : KinematicBody2D
 
     public override void _Ready()
     {
+        this.Position = Utilities.LastCheckpoint;
         GD.Print("Ready!!");
         moveSpeed = maxMoveSpeed;
         _animatedSprite = GetNode<AnimatedSprite>("AnimatedSprite");

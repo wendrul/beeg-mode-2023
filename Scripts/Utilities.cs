@@ -10,6 +10,9 @@ namespace BeegMode2023.Scripts
         public static DeathScreen DeatScreenEntity {get; set;}
         public static music MusicPlayer { get; internal set; }
         public static Dictionary<string, int> PlatformTally {get; set;} = new Dictionary<string, int>();
+        public static Vector2 LastCheckpoint { get; internal set; } = new Vector2(-379, -32);
+        public static bool ShouldPlayMusciOnStart { get; internal set; }
+
         public static int Deaths = 0;
 
         public static T GetChildByType<T>(this Node node, bool recursive = true) 

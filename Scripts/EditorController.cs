@@ -110,11 +110,6 @@ namespace BeegMode2023.Scripts
                 {
                     ToggleEditorMode();
                 }
-
-                if (Input.IsActionJustPressed("debug"))
-                {
-                    GetTree().ReloadCurrentScene();
-                }
             }
             
         }
